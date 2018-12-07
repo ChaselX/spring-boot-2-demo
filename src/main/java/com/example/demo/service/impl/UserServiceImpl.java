@@ -42,7 +42,8 @@ public class UserServiceImpl implements UserService {
         ) {
             authorities.add(new SimpleGrantedAuthority(permission.getCode()));
         }
-        return new User(userVO.getUsername(), userVO.getPassword(), authorities);
+//        return new User(userVO.getUsername(), userVO.getPassword(), authorities);
+        return User.builder().username(userVO.getUsername()).password(userVO.getPassword()).authorities(authorities).disabled(!userVO.isEnabled()).build();
     }
 
     @Override

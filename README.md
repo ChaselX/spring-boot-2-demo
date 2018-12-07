@@ -1,5 +1,13 @@
 文章地址：https://www.jianshu.com/p/e8818819a68f
 
+#### 简介
+
+文章内容介绍：基于SpringBoot 2.x 的demo，集成了 spring-boot-security、mybatis、druid、redis 等等
+
+读者按需自取，还有很多未完成的，慢慢来
+
+项目代码下载地址：https://github.com/ChaselX/spring-boot-2-demo
+
 #### 使用Maven构建项目
 
 可以用IDEA集成好的Spring Initializr来创建一个SpringBoot项目。
@@ -637,9 +645,9 @@ spring:
 
 ![](https://upload-images.jianshu.io/upload_images/7882361-6519036e2af46782.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-#### 基于Spring Security登录机制的登录验证与认证
+#### 基于Spring Security安全框架的的认证与验证
 
-传统的登录是通过cookie-session方式实现登录认证，而在前后端分离的情况下，实现用户的认证与鉴权的更好的方式是使用JWT(Java Web Token)
+传统的登录是通过cookie-session方式实现登录认证，而在前后端分离的情况下，实现用户鉴权的更好的方式是使用JWT(Java Web Token)
 
 ##### 引入Spring Security
 
@@ -730,7 +738,7 @@ public class HelloController {
 }
 ```
 
-运行项目测试
+运行项目测试，访问系统首页
 
 ![首页正常展示](https://upload-images.jianshu.io/upload_images/7882361-f2e065b80bfe5bbd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -741,6 +749,8 @@ public class HelloController {
 Spring Security的安全策略已经生效，但是具体的登录功能还没有实现
 
 ##### 基于Spring Security的登录功能实现
+
+若对Spring Security框架登录逻辑感兴趣，可参考[Spring Security 登录框架源码逻辑剖析](https://www.jianshu.com/p/dc69a722d505)与Spring Security的源码食用
 
 要实现基于Spring Security的登录功能，首先需要定义一个继承了Spring Security的`UserDetailsService`接口的接口，修改一下之前的UserService
 
@@ -871,7 +881,7 @@ public class UserServiceImpl implements UserService {
 
 虽然实现了加密验证，但是却没有定义权限验证相关的用户、角色、权限
 
-要使用Spring Security安全框架，由于`UserDetailsService.loadUserByUsername()`返回的是一个`UserDetails`类型的对象。`UserDetails`接口中最重要的是`getAuthorities()`方法，用户所具有的所有权限都定义在里面。因此需要做些处理，从数据库获取系统用户，并根据相关的角色权限来构造`UserDetails`的`authorities`属性，为此首先需要定义好系统的用户、角色、权限实体表与它们之间的关系表。用户实体类已经定义好，还有角色、权限、用户角色以及角色权限未定义。
+要使用Spring Security安全框架，由于`UserDetailsService.loadUserByUsername()`返回的是一个`UserDetails`类型的对象。`UserDetails`接口中最重要的是`getAuthorities()`方法，用户所具有的所有权限都定义在里面。因此需要做些处理，从数据库获取系统用户，并根据相关的角色权限来构造`UserDetails`的`authorities`属性，为此首先需要定义好系统的用户、角色、权限实体表与它们之间的关系表。用户实体类已经定义好，还有角色、权限、用户角色关系以及角色权限关系未定义。
 
 ```
 package com.example.demo.model.entity;
@@ -1154,6 +1164,10 @@ public interface PermissionMapper {
 
 ![](https://upload-images.jianshu.io/upload_images/7882361-601a1618385d9262.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+
+------
+
+# 未完待续 未完待续 未完待续 未完待续 未完待续 未完待续 未完待续 未完待续 未完待续
 
 ##### aes加密传输登录密码
 
