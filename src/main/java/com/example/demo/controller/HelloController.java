@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
@@ -43,7 +45,7 @@ public class HelloController {
             Thread.sleep(2000);
             if (future.get(5, TimeUnit.SECONDS)) {
                 System.out.println("return");
-                return "完成时间：" + System.currentTimeMillis() + " ，耗时：" + (System.currentTimeMillis() - start);
+                return "完成时间：" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + " ，耗时：" + (System.currentTimeMillis() - start);
             }
         } catch (Exception e) {
             e.printStackTrace();
