@@ -1,11 +1,15 @@
 package com.example.demo.model.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 /**
  * @author XieLongzhen
  * @date 2018/10/7 17:42
  */
+@ApiModel
 public class SysUser implements Serializable {
 
     private static final long serialVersionUID = 215517484123587L;

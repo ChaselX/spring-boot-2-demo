@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.HelloService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,7 @@ import java.util.concurrent.TimeUnit;
  */
 @RestController
 @RequestMapping("/hello")
+@Api("简易测试API")
 public class HelloController {
     @Autowired
     private RedisTemplate<String, String> stringStringRedisTemplate;
@@ -31,12 +34,14 @@ public class HelloController {
     }
 
     @GetMapping("/sayHello")
+    @ApiOperation(value = "Redis测试接口",notes = "Redis简易测试接口", response = String.class)
     public String sayHello() {
         stringStringRedisTemplate.opsForValue().set("demo:SayHello", "Hello SpringBoot From Redis!", 5, TimeUnit.SECONDS);
         return stringStringRedisTemplate.opsForValue().get("demo:SayHello");
     }
 
     @GetMapping("/testAsync")
+    @ApiOperation(value = "异步测试接口",notes = "简单异步测试接口", response = String.class)
     public String testAsync() {
         System.out.println("handler request");
         try {
