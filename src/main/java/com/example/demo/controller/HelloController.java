@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  */
 @RestController
 @RequestMapping("/hello")
-@Api("简易测试API")
+@Api(description = "简易测试API", tags = {"test", "easy"})
 public class HelloController {
     @Autowired
     private RedisTemplate<String, String> stringStringRedisTemplate;
@@ -34,14 +34,14 @@ public class HelloController {
     }
 
     @GetMapping("/sayHello")
-    @ApiOperation(value = "Redis测试接口",notes = "Redis简易测试接口", response = String.class)
+    @ApiOperation(value = "Redis测试接口", notes = "Redis简易测试接口", response = String.class)
     public String sayHello() {
         stringStringRedisTemplate.opsForValue().set("demo:SayHello", "Hello SpringBoot From Redis!", 5, TimeUnit.SECONDS);
         return stringStringRedisTemplate.opsForValue().get("demo:SayHello");
     }
 
     @GetMapping("/testAsync")
-    @ApiOperation(value = "异步测试接口",notes = "简单异步测试接口", response = String.class)
+    @ApiOperation(value = "异步测试接口", notes = "简单异步测试接口", response = String.class)
     public String testAsync() {
         System.out.println("handler request");
         try {
