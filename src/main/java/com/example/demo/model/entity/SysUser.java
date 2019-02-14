@@ -2,6 +2,7 @@ package com.example.demo.model.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 
@@ -17,6 +18,7 @@ public class SysUser implements Serializable {
     /**
      * 主键id
      */
+    @Id
     private Long id;
 
     /**

@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.mapper.UserMapper;
+import com.example.demo.dao.UserMapper;
 import com.example.demo.model.entity.Permission;
 import com.example.demo.model.entity.Role;
 import com.example.demo.model.entity.SysUser;

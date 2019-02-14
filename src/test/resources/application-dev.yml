@@ -85,7 +85,10 @@ spring:
         min-idle: 50 # 连接池中的最小空闲连接
         max-wait: 6000ms
     timeout: 2000ms
-
+  data:
+    mongodb:
+      uri: mongodb://localhost/test
+      
 mybatis:
   mapper-locations: classpath*:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
   type-aliases-package: com.example.demo.model.entity  # 注意：对应实体类的路径

@@ -1,4 +1,4 @@
-package com.example.demo.mapper;
+package com.example.demo.dao;
 
 import com.example.demo.model.entity.SysUser;
 import com.example.demo.model.vo.SysUserVO;
@@ -21,8 +21,8 @@ public interface UserMapper {
 
     @Select("SELECT * FROM user WHERE username = #{username}")
     @Results({
-            @Result(property = "roles", column = "id", many = @Many(select = "com.example.demo.mapper.RoleMapper.getRolesByUserId")),
-            @Result(property = "permissions", column = "id", many = @Many(select = "com.example.demo.mapper.PermissionMapper.getPermissionsByUserId"))
+            @Result(property = "roles", column = "id", many = @Many(select = "com.example.demo.dao.RoleMapper.getRolesByUserId")),
+            @Result(property = "permissions", column = "id", many = @Many(select = "com.example.demo.dao.PermissionMapper.getPermissionsByUserId"))
     })
     SysUserVO getDetailsByUsername(String username);
 }
